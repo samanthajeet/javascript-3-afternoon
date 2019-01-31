@@ -99,9 +99,13 @@ function double(obj){
 function secrets(obj){
   var string = ''
   for (prop in obj) {
-    
+    if (prop.substring(0,2) === 'sh')  {
+      string += obj[prop]
+    }
   }
+  return string
 }
+
 
 
 
@@ -111,17 +115,17 @@ function secrets(obj){
   Uncomment the example below to see a for in loop deleting all the properties inside an object.
 */
 
-// var deleteAllThethings = {
-//   one: 1,
-//   two: 2,
-//   three: 3
-// }
+var deleteAllThethings = {
+  one: 1,
+  two: 2,
+  three: 3
+}
 
-// for(var key in deleteAllThethings) {
-//   delete deleteAllThethings[key]
-// }
+for(var key in deleteAllThethings) {
+  delete deleteAllThethings[key]
+}
 
-// console.log(deleteAllThethings)
+console.log(deleteAllThethings)
 
 
 
@@ -132,8 +136,10 @@ function secrets(obj){
   Delete the property password and return the object.
 */
 
-//Code Here
-
+function removePassword(obj){
+  delete obj.password;
+  return obj
+}
 
 
 ////////// PROBLEM 6 //////////
@@ -151,7 +157,11 @@ var deleteTheBigNumbers = {
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
+for (let prop in deleteTheBigNumbers) {
+  if (deleteTheBigNumbers[prop] > 100) {
+    delete deleteTheBigNumbers[prop]
+  }
+}
 
 
 
@@ -164,7 +174,14 @@ var deleteTheBigNumbers = {
   Return the updated object.
 */
 
-//Code Here
+function startsWithK(obj){
+  for (let prop in obj) {
+    if (prop.substring(0,1) === 'k') {
+      delete obj[prop]
+    }
+  }
+  return obj
+}
 
 
 
@@ -179,6 +196,12 @@ var deleteTheBigNumbers = {
   (hint: the method includes() may be of use...)
 */
 
-//Code Here
-
+function hiddenTreasure(obj){
+  for (let prop in obj) {
+    if (!obj[prop].includes('treasure')){
+      delete obj[prop]
+    }
+  }
+  return obj
+}
 
